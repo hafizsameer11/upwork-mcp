@@ -6,6 +6,10 @@ return [
     'default_frequency_minutes' => (int) env('UPWORK_WATCH_FREQUENCY', 15),
     'strong_match_threshold' => 85,
     'medium_match_threshold' => 70,
+    'oauth' => [
+        // Upwork DCR currently requires a loopback redirect (localhost)
+        'redirect_uri' => env('UPWORK_OAUTH_REDIRECT_URI', env('APP_URL', 'http://localhost:8000').'/upwork/oauth/callback'),
+    ],
     'openai' => [
         'api_key' => env('OPENAI_API_KEY'),
         'model' => env('OPENAI_MODEL', 'gpt-4o-mini'),

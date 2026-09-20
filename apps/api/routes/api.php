@@ -8,6 +8,7 @@ use App\Http\Controllers\Api\ProposalController;
 use App\Http\Controllers\Api\SearchProfileController;
 use App\Http\Controllers\Api\SettingsController;
 use App\Http\Controllers\Api\UpworkAccountController;
+use App\Http\Controllers\Api\UpworkOAuthController;
 use Illuminate\Support\Facades\Route;
 
 Route::post('/login', [AuthController::class, 'login']);
@@ -48,6 +49,7 @@ Route::middleware('auth:sanctum')->group(function () {
     Route::post('/accounts', [UpworkAccountController::class, 'store']);
     Route::patch('/accounts/{upworkAccount}', [UpworkAccountController::class, 'update']);
     Route::post('/accounts/{upworkAccount}/connect', [UpworkAccountController::class, 'connect']);
+    Route::post('/accounts/{upworkAccount}/oauth/start', [UpworkOAuthController::class, 'start']);
     Route::post('/accounts/{upworkAccount}/sync', [UpworkAccountController::class, 'sync']);
 
     Route::get('/settings', [SettingsController::class, 'show']);

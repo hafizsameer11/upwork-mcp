@@ -150,7 +150,7 @@ class UpworkMcpClient
         return $draft;
     }
 
-    private function rpc(string $method, array $params): array
+    private function rpc(string $method, array $params, array $options = []): array
     {
         $token = $this->account->access_token;
         if (! $token) {
@@ -171,6 +171,17 @@ class UpworkMcpClient
             ]);
 
         if ($response->status() === 401) {
+            // One refresh attempt, then retry
+            if (! ($options['retried'] ?? false) && $this->account->refresh_token) {
+                try {
+                    app(\App\Services\Upwork\UpworkMcpOAuthService::class)->refresh($this->account->fresh());
+                    $this->account->refresh();
+
+                    return $this->rpc($method, $params, ['retried' => true]);
+                } catch (\Throwable) {
+                    // fall through
+                }
+            }
             throw new RuntimeException('Upwork MCP unauthorized. Reconnect OAuth for this account.');
         }
 

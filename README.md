@@ -77,7 +77,7 @@ Open http://localhost:3000
 ### 4. Configure
 
 1. **Settings** → Slack webhook URL  
-2. **Accounts** → add account → paste MCP OAuth access token after logging into Upwork MCP  
+2. **Accounts** → add account → **Connect with Upwork** (browser OAuth). Callback defaults to `http://localhost:8000/upwork/oauth/callback`  
 3. Set `OPENAI_API_KEY` in `apps/api/.env`  
 4. Only after Support OK: `UPWORK_POLLING_ENABLED=true`
 

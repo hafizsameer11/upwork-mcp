@@ -62,7 +62,7 @@ class UpworkAccountController extends Controller
 
     public function connect(Request $request, UpworkAccount $upworkAccount)
     {
-        // Placeholder: store token after MCP OAuth completed in browser/manual paste
+        // Manual fallback if browser OAuth is unavailable
         $data = $request->validate([
             'access_token' => 'required|string',
             'refresh_token' => 'nullable|string',
