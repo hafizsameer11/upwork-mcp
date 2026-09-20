@@ -1,0 +1,11 @@
+{
+  "name": "upwork-bd",
+  "private": true,
+  "scripts": {
+    "dev:api": "cd apps/api && php artisan serve",
+    "dev:web": "cd apps/web && npm run dev",
+    "dev:queue": "cd apps/api && php artisan queue:work",
+    "dev:reverb": "cd apps/api && php artisan reverb:start",
+    "docker:up": "docker compose up -d"
+  }
+}

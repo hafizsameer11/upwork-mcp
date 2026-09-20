@@ -1,0 +1,12 @@
+/.env
+**/.env
+**/node_modules
+**/vendor
+**/.next
+**/storage/logs/*
+**/storage/framework/cache/*
+**/storage/framework/sessions/*
+**/storage/framework/views/*
+apps/api/database/database.sqlite
+.idea
+.vscode
